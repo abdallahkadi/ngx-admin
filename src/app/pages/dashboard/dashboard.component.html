@@ -61,18 +61,36 @@
 
 <div class="row">
     <div class="col-md-12 col-lg-12 text-center">
-        
-        <nb-tabset class="width:100%">
+        <nb-tabset fullWidth>
             <nb-tab tabTitle="Simulation Charts">
                 <br>
-                <nb-tabset class="width:100%">
+                <div class="row h-100 justify-content-center align-items-center">
+                    <div class="col-xxxl-5 col-md-5 col-lg-5 col-sm-5 text-center">
+                            
+                        <nb-card>
+                            <nb-card-header>
+                                <div class="row justify-content-center">
+                                    <div class="col-xxxl-12 col-lg-12 col-md-12 col-sm-12">
+
+                                        <select  style="text-transform: uppercase;" class="form-control" (change)="siteChanged($event.target.value)" [(ngModel)]="siteName">
+                                            <option value="" disabled selected>Select a Site</option>
+                                            <option style="text-transform: uppercase;" *ngFor="let n of names" value={{n}}>{{n}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </nb-card-header>
+                        </nb-card>                        
+                    </div>
+                </div>
+                <nb-tabset >
                     <nb-tab tabTitle="Multiple X-Axis Chart">
                         <br>
+                            <h5 *ngIf="siteName == ''">NO SITE SELECTED YET</h5>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="arrange">
-                                    <li *ngFor="let site of data" class="col-xxxl-6 col-md-6">
-                                        <mychart-xaxis [site]="site"></mychart-xaxis>
+                                    <li *ngFor="let hub of hubs" class="col-xxxl-6 col-md-6">
+                                        <mychart-xaxis [hub]="hub"></mychart-xaxis>
                                     </li>
                                 </ul>     
                             </div>
@@ -80,23 +98,25 @@
                     </nb-tab>
                     <nb-tab tabTitle="Bar Chart">
                       <br>
+                        <h5 *ngIf="siteName == ''">NO SITE SELECTED YET</h5>
                       <div class="row">
                           <div class="col-md-12">
                               <ul class="arrange">
-                                  <li *ngFor="let site of data" class="col-xxxl-6 col-md-6">
-                                      <mychart-bar [site]="site"></mychart-bar>
-                                  </li>
+                                    <li *ngFor="let hub of hubs" class="col-xxxl-6 col-md-6">
+                                        <mychart-bar [hub]="hub"></mychart-bar>
+                                    </li>
                               </ul>     
                           </div>
                       </div>
                     </nb-tab>
                     <nb-tab tabTitle="Horizontal Bar Chart">
                         <br>
+                            <h5 *ngIf="siteName == ''">NO SITE SELECTED YET</h5>
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="arrange">
-                                    <li *ngFor="let site of data" class="col-xxxl-6 col-md-6">
-                                        <mychart-horizontal-bar [site]="site"></mychart-horizontal-bar>
+                                    <li *ngFor="let hub of hubs" class="col-xxxl-6 col-md-6">
+                                        <mychart-horizontal-bar [hub]="hub"></mychart-horizontal-bar>
                                     </li>
                                 </ul>     
                             </div>
@@ -104,17 +124,33 @@
                       </nb-tab>
                       <nb-tab tabTitle="Line Chart">
                           <br>
+                          <h5 *ngIf="siteName == ''">NO SITE SELECTED YET</h5>
                           <div class="row">
                               <div class="col-md-12">
                                   <ul class="arrange">
-                                      <li *ngFor="let site of data" class="col-xxxl-6 col-md-6">
-                                          <mychart-line [site]="site"></mychart-line>
-                                      </li>
+                                        <li *ngFor="let hub of hubs" class="col-xxxl-6 col-md-6">
+                                            <mychart-line [hub]="hub"></mychart-line>
+                                        </li>
                                   </ul>     
                               </div>
                           </div>
                         </nb-tab>
+                        <nb-tab tabTitle="Chart to Table">
+                            <br>
+                            <h5 *ngIf="siteName == ''">NO SITE SELECTED YET</h5>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="arrange">
+                                        <li *ngFor="let hub of hubs" class="col-xxxl-6 col-md-6">
+                                            <table-chart [hub]="hub" class="col-lg-12"></table-chart>
+                                        </li>
+                                    </ul>     
+                                </div>
+                            </div>
+                        </nb-tab>
                 </nb-tabset>
+
+                
             </nb-tab>
             <nb-tab tabTitle="Simulation Table">
                 <div class="col-md-12">

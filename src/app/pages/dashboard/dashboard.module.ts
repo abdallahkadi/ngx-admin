@@ -28,6 +28,8 @@ import { MyChartHorizontalBarComponent } from './mychart-horizontal-bar/mychart-
 import { MyChartLineComponent } from './mychart-line/mychart-line.component';
 import { TableSimulationComponent } from './simulation-table/table.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { TableChartComponent } from './table-chart/table-chart.component';
+
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     MyChartHorizontalBarComponent,
     MyChartLineComponent,
     TableSimulationComponent,
+    TableChartComponent,
   ],
 })
 export class DashboardModule { }
